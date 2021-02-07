@@ -1,0 +1,33 @@
+1、source
+
+source a.sh
+在当前shell内去读取、执行a.sh，而a.sh不需要有"执行权限"
+
+source命令可以简写为"."
+
+. a.sh
+注意：中间是有空格的。
+
+ 
+
+2、sh/bash
+
+sh a.sh
+bash a.sh
+都是打开一个subshell去读取、执行a.sh，而a.sh不需要有"执行权限"
+
+通常在subshell里运行的脚本里设置变量，不会影响到父shell的。
+
+3、./
+
+./a.sh
+#bash: ./a.sh: 权限不够
+chmod +x a.sh
+./a.sh
+打开一个subshell去读取、执行a.sh，但a.sh需要有"执行权限"
+
+可以用chmod +x添加执行权限
+
+另外，使用./来执行的文件里有alias语句的话，shell并不会把alias别名扩展成对应的命令，要解决的话，得使用shopt命令来开启alias扩展选项
+
+shopt -s expand_aliases
